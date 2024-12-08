@@ -51,6 +51,9 @@ public class MyString {
      */
     public static boolean subsetOf(String str1, String str2) {
         int count=0;
+        if (str1 == "" && str2 != ""){
+            return true;
+        }
          for(int i=0;i<str1.length();i++)
          {
             if(countChar(str1, str1.charAt(i))<=countChar(str2, str2.charAt(i)))
