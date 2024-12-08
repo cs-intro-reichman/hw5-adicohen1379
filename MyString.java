@@ -1,13 +1,19 @@
+import java.util.Random;
+
 /**
  * A library of string functions.
  */
 public class MyString {
     public static void main(String args[]) {
         String hello = "hello";
-        System.out.println(countChar(hello, 'h'));
-        System.out.println(countChar(hello, 'l'));
-        System.out.println(countChar(hello, 'z'));
-        System.out.println(spacedString(hello));
+        //System.out.println(countChar(hello, 'h'));
+        //System.out.println(countChar(hello, 'l'));
+        //System.out.println(countChar(hello, 'z'));
+        //System.out.println(spacedString(hello));
+        //System.out.println(insertRandomly('z',"hello"));
+        //System.out.println(subsetOf("hello", "hel"));
+        System.out.println(remove("committee","meet"));
+        //System.out.println(randomStringOfLetters(100));
         //// Put your other tests here.
     }
 
@@ -20,8 +26,16 @@ public class MyString {
      * @return the number of times c appears in str
      */
     public static int countChar(String str, char ch) {
-        //// Replace the following statement with your code
-        return 0;
+        int count=0;
+        for(int i=0;i<str.length();i++)
+        {
+            if(str.charAt(i)==ch)
+            {
+                count++;
+            }
+
+        }
+        return count;
     }
 
     /** Returns true if str1 is a subset string str2, false otherwise
@@ -36,7 +50,22 @@ public class MyString {
      * @return true is str1 is a subset of str2, false otherwise
      */
     public static boolean subsetOf(String str1, String str2) {
-         //// Replace the following statement with your code
+        int count=0;
+         for(int i=0;i<str1.length();i++)
+         {
+            for(int j=0;j<str2.length();j++)
+            {
+                if(str1.charAt(i)==str2.charAt(j))
+                {
+                    count++;
+                    break;
+                }
+            }
+            if(count==str2.length())
+            {
+                return true;
+            }
+         }
         return false;
     }
 
@@ -49,8 +78,13 @@ public class MyString {
      * @return a string consisting of the characters of str, separated by spaces.
      */
     public static String spacedString(String str) {
-        //// Replace the following statement with your code
-        return null;
+        String newstring="";
+        for(int i=0;i<str.length()-1;i++)
+        {
+            newstring+=str.charAt(i)+" ";
+        }
+        newstring+=str.charAt(str.length()-1);
+        return newstring;
     }
   
     /**
@@ -64,8 +98,15 @@ public class MyString {
      * @return a randomly generated string, consisting of 'n' lowercase letters
      */
     public static String randomStringOfLetters(int n) {
-        //// Replace the following statement with your code
-        return null;
+        String newstring="";
+        String alphabet = "abcdefghijklmnopqrstuvwxyz";
+        int index=0;
+        for(int i=0;i<n;i++)
+        {
+            index=(int)(Math.random() *26);
+            newstring+=alphabet.charAt(index);
+        }
+        return newstring;
     }
 
     /**
@@ -78,8 +119,38 @@ public class MyString {
      * @return a string consisting of str1 minus all the characters of str2
      */
     public static String remove(String str1, String str2) {
-       //// Replace the following statement with your code
-        return null;
+        String newstr="";
+        char []  array1=new char [str1.length()];
+        char []  array2=new char [str2.length()];
+       for(int i=0;i<str1.length();i++)
+       {
+           array1[i]=str1.charAt(i);
+       }
+       for(int i=0;i<str2.length();i++)
+       {
+           array2[i]=str2.charAt(i);
+       }
+       for(int i=0;i<array2.length;i++)
+       {
+            for(int j=0;j<array1.length;j++)
+            {
+               // System.out.println(array1[j]+" "+array2[i]);
+                if(array1[j]==array2[i])
+                {
+                    array1[j]=' ';
+                    array2[i]=' ';
+                }
+            }
+       }
+       for(int i=0;i<array1.length;i++)
+       {
+        //System.out.println(array1[i]);
+        if(array1[i]!=' ')
+        {
+            newstr+=array1[i];
+        }
+       }
+        return newstr;
     }
 
     /**
