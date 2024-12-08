@@ -11,8 +11,8 @@ public class MyString {
         //System.out.println(countChar(hello, 'z'));
         //System.out.println(spacedString(hello));
         //System.out.println(insertRandomly('z',"hello"));
-        //System.out.println(subsetOf("hello", "hel"));
-        System.out.println(remove("committee","meet"));
+        System.out.println(subsetOf("sap", "space"));
+        //System.out.println(remove("committee","meet"));
         //System.out.println(randomStringOfLetters(100));
         //// Put your other tests here.
     }
@@ -53,18 +53,22 @@ public class MyString {
         int count=0;
          for(int i=0;i<str1.length();i++)
          {
-            for(int j=0;j<str2.length();j++)
+            if(countChar(str1, str1.charAt(i))<=countChar(str2, str2.charAt(i)))
             {
-                if(str1.charAt(i)==str2.charAt(j))
+                for(int j=0;j<str2.length();j++)
                 {
-                    count++;
-                    break;
+                    if(str1.charAt(i)==str2.charAt(j))
+                    {
+                        count++;
+                        if(count==str1.length())
+                        {
+                            return true;
+                        }   
+                    }
                 }
             }
-            if(count==str2.length())
-            {
-                return true;
-            }
+            else
+                return false;
          }
         return false;
     }
@@ -82,6 +86,10 @@ public class MyString {
         for(int i=0;i<str.length()-1;i++)
         {
             newstring+=str.charAt(i)+" ";
+        }
+        if(str=="")
+        {
+            return "";
         }
         newstring+=str.charAt(str.length()-1);
         return newstring;
@@ -134,7 +142,6 @@ public class MyString {
        {
             for(int j=0;j<array1.length;j++)
             {
-               // System.out.println(array1[j]+" "+array2[i]);
                 if(array1[j]==array2[i])
                 {
                     array1[j]=' ';
@@ -144,7 +151,6 @@ public class MyString {
        }
        for(int i=0;i<array1.length;i++)
        {
-        //System.out.println(array1[i]);
         if(array1[i]!=' ')
         {
             newstr+=array1[i];
